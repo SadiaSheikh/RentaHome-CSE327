@@ -1,1 +1,1 @@
-# RentaHome-CSE327
+# RentaHome-CSE327 Project
