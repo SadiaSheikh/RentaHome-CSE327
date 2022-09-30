@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class = "profiles">
+    <div class = "profile">
+        <h2>Username: {{ user.username }}.</h2><br>
+        <h2>Name: {{ user.first_name }} {{ user.last_name }}.</h2><br>
+        <h2>Email: {{ user.email }}</h2><br>  
+    </div>   
+    <form class = "site-form" method = "post" enctype = "multipart/form-data">
+        <h1>Edit User Profile Information</h1>
+        {% csrf_token %}
+        {{ u_form.as_p }}
+        <input type = "submit" value = "Update Profile">
+        <br>
+    </form>
+</div>
+{% endblock %}

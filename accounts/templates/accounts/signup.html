@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class = "accounts-box">
+    <h1>Sign Up</h1>
+
+    <form class = "site-form" action = "/accounts/signup/" method = "post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type = "submit" value = "Signup">
+        <br>
+    </form>
+    <h1>Already Have an Account? <a href = "{% url 'accounts:login' %}"> login</a></h1>
+</div>
+
+{% endblock %}
