@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Enter your Complaints/Thoughts</h1>
+<form action = "{% url 'posts:contact' %}" method = "post">
+    {% csrf_token %}
+    <div>
+        <input type = "text" name = "message-name" placeholder = "your name">
+    </div>
+    <div>
+        <input type = "email" name = "message-email" placeholder = "your email">
+    </div>
+    <div>
+        <textarea name = "message" placeholder = "your message"></textarea>
+    </div>
+    <div>
+        <button type = "submit"><i class = "fa fa-envelope"></i>Send</button>
+    </div>
+    
+</form>
+  
+{% endblock %}

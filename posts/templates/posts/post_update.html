@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    <h1>Update Post</h1>
+    <form action = "{% url 'posts:update' post.id %}" class = "site-form" method = "post" enctype = "multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <input type = "submit" class = "update-button" value = "Save"><br>
+        <a href = "{% url 'posts:detail' post.id %}" class = "highlight">Cancel</a>
+    </form>           
+</div>
+
+{% endblock %}

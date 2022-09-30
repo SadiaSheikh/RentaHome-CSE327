@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+<div class = "post-detail">
+    <div class = "post">
+        <h1>Location: {{post.place}}</a></h1><br>
+        <img src = "{{ post.image.url }}" alt = "House picture/None" width = "600" height = "600"><br>
+        <h2>Address: {{post.address}}.</h2><br>
+        <h2>Rent Price: BDT {{post.rent}}.</h2><br>
+        <h2>Number of Bedrooms: {{post.bedroom}}.</h2><br>
+        <h2>Number of Bathrooms: {{post.bathroom}}.</h2><br>
+        <h2>Flat Size in sqft: {{post.size}} sqft.</h2><br>
+        <h2>Owner's Name: {{post.owner}}.</h2><br>
+        <h2>Owner's Contact Number: +880{{post.phone}}.</h2><br>
+        <p>Posted on: {{post.date_posted}}</p><br> 
+        {% if post.owner == user %} 
+        <p><a class = "highlight" href = "{% url 'posts:update' post.id %}">Update</a>  
+        <a class = "delete" href = "{% url 'posts:remove' post.id %}">Delete</a></p>
+        {% endif %}
+    </div>
+</div>
+</center>
+{% endblock %}

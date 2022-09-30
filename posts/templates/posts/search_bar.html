@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if searched %}
+         <h1>You Searched for "{{ searched }}"</h1>
+         <br/>
+        {% for post in post %}
+        <div class = "search-results-wrapper">
+            <a class = "search-results" href = "{% url 'posts:detail' post.id %}">{{ post }}</a><br/>
+        </div>
+        {% endfor %}
+    {% else %}
+        <h1>You Didn't Search for Anything!</h1>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> Your Advertisements</h1>
+<div class = "posts">
+  {% for post in post %}
+    {% if post.owner == user %} 
+    <div class = "post"> 
+      <h2><a href = "{% url 'posts:detail' id=post.id %}">{{post.place}}</a></h2>
+      <h2>Address: {{post.address}}.</h2>
+      <h2>Rent Price: BDT {{post.rent}}.</h2>
+      <h2>Number of Bedrooms: {{post.bedroom}}.</h2>
+      <h2>Number of Bathrooms: {{post.bathroom}}.</h2>
+      <h2>Flat Size in sqft: {{post.size}} sqft.</h2>
+      <h2>Owner's Name: {{post.owner}}.</h2>
+      <p>Posted on: {{post.date_posted}}</p>
+      <p><a href = "{% url 'posts:detail' id=post.id %}">Click to view more details</a></p>
+      <div class = "edit-buttons">
+        <p><a class = "highlight" href = "{% url 'n 
+</div> 
+
+{% endblock %},,,,,,,,,.l m.l,l.,

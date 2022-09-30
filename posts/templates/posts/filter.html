@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class = "posts">
+    {% for post in Post %}
+    <a class = "search-results" href = "{% url 'posts:detail' post.id %}">{{ post }}</a><br/>
+    {% endfor %}
+</div>
+  
+{% endblock%}
