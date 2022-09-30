@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href = "https://fonts.googleapis.com/icon?family=Material+Icons" rel = "stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta charset = "utf-8">
+        <title>RentaHome</title>
+        <link rel = "stylesheet" href = "{% static 'styles.css' %}"> 
+    </head>
+    <body>
+        <header class = "wrapper">
+            <h1><a href = "{% url 'home' %}"><img src = "{% static 'logo.png'%}" alt= "RentaHome logo" width = "180", height = "180"/></a></h1>
+            <nav>
+                <ul>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <form action = "{% url 'posts:searchBar' %}" method = "post">
+                            {% csrf_token %}
+                            <input class = "search-bar" class = "search-bar-box" type = "search" placeholder = "search by location" 
+                            name = "searched" id = "searched">
+                            <button type = "submit">Search</button>
+                        </form>
+                    </li>
+                    <li><a href = "{% url 'posts:create' %}" class = "highlight">Create New Post</a></li>
+                    <li><a href = "{% url 'posts:myPost' %}" class = "highlight">My Posts</a></li>
+                    <li><a href = "{% url 'accounts:profile' %}" class = "highlight">My Profile</a></li>
+                    <li>
+                        <form action = "{% url 'accounts:logout' %}" method = "post">
+                            {% csrf_token %}
+                            <button type = "submit"> Logout</button>
+                        </form>
+                    </li>
+                    {% else %}
+                    <li><a href = "{% url 'accounts:login' %}" class = "highlight">Login</a></li>
+                    <li><a href = "{% url 'accounts:signup' %}" class = "highlight">Signup</a></li>
+                    <li>
+                        <form action = "{% url 'posts:searchBar' %}" method = "post">
+                            {% csrf_token %}
+                            <input class = "search-bar" type = "search" placeholder = "search by location" name = "searched" id = "searched">
+                            <button type = "submit">Search</button>
+                        </form>
+                    </li>
+                    <li><a href = "{% url 'posts:create' %}" class = "highlight">Create New Post</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+        <div class = "filter-body">
+            <div class = ".filter-boxes">
+                <form method = "get" action = "{% url 'posts:filters' %}">
+                     <select id = "query" name = "query">
+                        <option value ="0">Filter by Budget</option>
+                        <option value ="1"> < 15000 BDT</option>
+                        <option value ="2"> 15,000-20,000 BDT</option>
+                        <option value ="3"> 20,001-25,000 BDT</option>
+                        <option value ="4"> 25,001-30,000 BDT</option>
+                        <option value ="5"> 25,001-30,000 BDT</option>
+                        <option value ="6"> 25,001-30,000 BDT</option>
+                        <option value ="7"> 30,000+ BDT</option>
+                    </select>
+                    <button class = "filter-button" type="submit">Filter</button>
+                </form>
+            </div>  
+        </div>
+        <div class = "wrapper">
+            {% block content %}
+            
+            {% endblock %}
+        </div>
+        <div class = "footer">
+            <div class = "footer-content">
+                <div class = "footer-section about">
+                    <h1>About Us:</h1>
+                    <p>RentaHome provides home solutions keeping your 
+                        preferences in mind. 
+                    </p>
+                </div>
+                <div class = "footer-section links">
+                    <h1>Related Links:</h1>
+                    <br>
+                    <div class = "contact">
+                        <i class = "material-icons">call</i> &nbsp; +8801*********<br>
+                        <i class = "material-icons">email</i> &nbsp; info@rentahome.com<br>
+                        <i class = "material-icons">facebook</i>
+                        <i class="fa fa-twitter" style = "font-size:24px"></i>
+                        <i class="fa fa-youtube-play" style = "font-size:24px"></i>
+                    </div>
+                    <div class = "link">
+                        <ul>
+                          <li><a href = "#">FAQ</a></li>
+                          <li><a href = "#">help</a></li>
+                          <li><a href = "#">Terms and Conditions</a></li>
+                          <li><a href = "#">Career</a></li>
+                        </ul>
+                      </div>
+                </div>
+                <div class = "footer-section contact-text">
+                    <h1><a href = "#">Contact Us</a></h1>
+                </div>
+            <div class = "footer-bottom">
+                &copy; All Rights Reserved by rentahome.com | Designed by RentaHome Team Members
+            </div>
+        </div>
+    </body>
+</html>
+    
